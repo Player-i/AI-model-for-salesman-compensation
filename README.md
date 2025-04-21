@@ -61,6 +61,70 @@ The project uses sales performance data with the following characteristics:
    - Use the trained models to make predictions on new data
    - Results will be saved in the `data/` directory
 
+## Detailed Script Execution
+
+### Building Models
+
+The `build model/` directory contains several model training scripts:
+
+1. SARIMA Model:
+   ```bash
+   python build\ model\expected_total_dinero_model_sarima.py
+   ```
+
+2. Random Forest Model:
+   ```bash
+   python build\ model\expected_total_dinero_model_random_forest.py
+   ```
+
+3. Ridge Regression Model:
+   ```bash
+   python build\ model\expected_total_dinero_model_ridge_regression.py
+   ```
+
+4. Custom Linear Regression:
+   ```bash
+   python build\ model\expected_total_dinero_own_linear_regression.py.py
+   ```
+
+Each model script will:
+- Load and preprocess the data
+- Train the model
+- Save the trained model to the `model/` directory
+- Generate predictions and save them to the `data/` directory
+
+### Bonus Calculations
+
+The `bonus calculations/` directory contains scripts for different bonus calculation methods:
+
+1. Min-Max Threshold Bonus:
+   ```bash
+   python bonus\ calculations\calculate_bonus_min_max_thresold.py
+   ```
+
+2. Threshold Above Bonus:
+   ```bash
+   python bonus\ calculations\calculate_bonus_with_thresold_above.py
+   ```
+
+3. Exact 100 Bonus:
+   ```bash
+   python bonus\ calculations\calculate_bonus_exact_100.py
+   ```
+
+Each bonus calculation script will:
+- Load the prediction data from the `data/` directory
+- Apply the specific bonus calculation method
+- Save the results with bonus calculations
+
+### Running Order
+
+For a complete analysis:
+
+1. First, run one of the model building scripts
+2. Then, run the desired bonus calculation script
+
+
 ## Model Types
 
 1. SARIMA Model:
