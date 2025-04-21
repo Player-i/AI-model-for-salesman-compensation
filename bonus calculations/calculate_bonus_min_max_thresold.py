@@ -9,7 +9,7 @@ df['ratio'] = df['total_dinero'] / df['expected_total_dinero']
 
 # Define bonus parameters
 threshold_min = 0.98  # Start bonus at 90%
-threshold_max = 1.035  # Full bonus at 103.5%
+threshold_max = 1.035  # Full bonus at 102%
 max_bonus = 50000
 
 # Calculate the bonus

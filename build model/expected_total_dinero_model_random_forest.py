@@ -4,10 +4,13 @@ from sklearn.ensemble import RandomForestRegressor
 import joblib
 
 # Load the data from the CSV file
-df = pd.read_csv('data/simulated/ruta_01_with_expected_simulated_ridge_regression.csv')
+df = pd.read_csv('data/raw_data_ruta_01.csv')
 
 # Clean column names: remove special characters, trim spaces, and convert to lowercase with underscores
 df.columns = df.columns.str.strip().str.replace('*', '', regex=False).str.replace(' ', '_').str.lower()
+
+# Convert 'total_dinero' to numeric, handling commas and spaces
+df['total_dinero'] = df['total_dinero'].str.replace(',', '').str.strip().astype(float)
 
 
 # Extract month from 'mm-yyyy' for cyclical features
@@ -58,4 +61,4 @@ print("\n### Predictions ###")
 print(df[['mm-yyyy', 'total_dinero', 'expected_total_dinero']].to_string(index=False))
 
 # Save the DataFrame with expected_total_dinero for use in the bonus calculation
-df.to_csv('data/simulated/ruta_01_with_expected_simulated_random_forest.csv', index=False)
+df.to_csv('data/simulated/ruta_01_with_expected_random_forest.csv', index=False)

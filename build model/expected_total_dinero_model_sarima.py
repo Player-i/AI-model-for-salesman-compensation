@@ -4,10 +4,14 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 import joblib
 
 # Load the data from the CSV file
-df = pd.read_csv('data/simulated/synthetic_sales_data_10years.csv')
+df = pd.read_csv('data/raw_data_ruta_01.csv')
 
 # Clean column names: remove special characters, trim spaces, and convert to lowercase with underscores
 df.columns = df.columns.str.strip().str.replace('*', '', regex=False).str.replace(' ', '_').str.lower()
+
+# Convert 'total_dinero' to numeric, handling commas and spaces
+df['total_dinero'] = df['total_dinero'].str.replace(',', '').str.strip().astype(float)
+
 
 # Convert 'mm-yyyy' to a datetime index for time series modeling
 df['date'] = pd.to_datetime(df['mm-yyyy'], format='%m-%Y')
